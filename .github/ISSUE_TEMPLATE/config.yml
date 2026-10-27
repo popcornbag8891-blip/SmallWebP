@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Open smallwebp.io
+    url: https://smallwebp.io
+    about: The converter itself. Runs in your browser, nothing is uploaded.
+  - name: Report a security problem privately
+    url: https://github.com/popcornbag8891-blip/SmallWebP/security/advisories/new
+    about: Please don't post security issues publicly.

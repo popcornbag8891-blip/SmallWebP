@@ -1,0 +1,26 @@
+name: Suggest an idea
+description: A feature or change that would make smallwebp.io more useful.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: Describe the task or problem first. It helps more than a proposed solution alone.
+      placeholder: I convert product photos for my shop every week and have to resize them separately…
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What do you use now?
+      description: Other tools or workarounds you've tried.
+  - type: markdown
+    attributes:
+      value: smallwebp.io never uploads images, so ideas that need a server to see your files can't be added.
