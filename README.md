@@ -16,17 +16,19 @@ This repository holds the documentation and is where problems and ideas are trac
   - **Lossless** (default): stores the pixels it receives exactly. Best for PNGs, screenshots, logos and graphics.
   - **Near-lossless**: the same lossless engine, with very small pixel adjustments that compress better.
   - **High quality**: lossy WebP with a quality slider from 40 to 100 (default 90). Best for photos.
-- **Color optimization** with libimagequant (the engine behind pngquant). It reduces an image to up to 256 colors before encoding, and is skipped when the palette can't meet a high quality threshold. It is on by default and can be turned off to skip color reduction. Use Lossless at original size to preserve source pixels.
+- **Color optimization** with libimagequant (the engine behind pngquant). It reduces an image to up to 256 colors before encoding, and is skipped when the palette can't meet a high quality threshold. It is off by default in Lossless, so Lossless at original size keeps the source pixels, and on by default in Near-lossless and High quality. The choice is saved separately for each mode.
 - **Animated GIFs stay animated**, keeping every frame's timing and the loop count.
 - **Batch conversion** of many files or whole folders, with one ZIP download that keeps the folder paths.
 - **Optional resize** to a maximum longest side. Smaller images keep their size.
 - **Before/after comparison** with a live quality tuner that re-encodes the real image.
-- **Honest sizes**: if a WebP comes out bigger than the original, it is shown in red.
+- **Honest sizes**: if a WebP comes out bigger than the original, it is flagged with the increase written out as a percentage.
 - **Metadata is not copied**: EXIF (including GPS location), XMP and comments are left out of the WebP.
 
 ## Privacy
 
-Everything runs in your browser. The libwebp encoder and the libimagequant color optimizer run as WebAssembly in a Web Worker, and the site's Content Security Policy blocks connections to other servers. Only your settings (mode, quality, resize, sound) are saved, in your browser's local storage. Nothing about your files is stored.
+Everything runs in your browser. The libwebp encoder and the libimagequant color optimizer run as WebAssembly in a Web Worker, and the site's Content Security Policy blocks connections to other servers. Only your settings (mode, quality, resize, color optimization, sound) are saved, in your browser's local storage. Nothing about your files is stored.
+
+Full details: [smallwebp.io/privacy](https://smallwebp.io/privacy/). Security contact: [security.txt](https://smallwebp.io/.well-known/security.txt).
 
 ## File validation
 
