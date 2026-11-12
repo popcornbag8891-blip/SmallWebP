@@ -1,6 +1,6 @@
 # smallwebp.io
 
-**Convert images to WebP in your browser. Nothing is uploaded.**
+**Convert images to WebP in your browser. Nothing is uploaded.** Or from ChatGPT, Claude and other AI assistants.
 
 [**Open smallwebp.io →**](https://smallwebp.io)
 
@@ -29,9 +29,21 @@ This repository holds the documentation and is where problems and ideas are trac
 
 ## Privacy
 
-Everything runs in your browser. The libwebp and libavif encoders, the libheif decoder and the libimagequant color optimizer run as WebAssembly in Web Workers, and the site's Content Security Policy blocks connections to other servers. Only your settings (mode, quality, output format, resize, color optimization, color profile, sound) are saved, in your browser's local storage. Nothing about your files is stored.
+On the website, everything runs in your browser. The libwebp and libavif encoders, the libheif decoder and the libimagequant color optimizer run as WebAssembly in Web Workers, and the site's Content Security Policy blocks connections to other servers. Only your settings (mode, quality, output format, resize, color optimization, color profile, sound) are saved, in your browser's local storage. Nothing about your files is stored.
+
+The separate converter for AI assistants (below) runs on a server: images sent to it are converted in memory and discarded, and only the result is kept, under a random link, for 1 hour.
 
 Full details: [smallwebp.io/privacy](https://smallwebp.io/privacy/). Security contact: [security.txt](https://smallwebp.io/.well-known/security.txt).
+
+## AI assistants
+
+Add `https://smallwebp.io/mcp` as a custom connector (remote MCP server, no sign-in) in ChatGPT, Claude, Cursor or VS Code, then ask the assistant to convert an image. It uses the same encoders and settings as the website and returns a download link that works for 1 hour. Without an assistant:
+
+```sh
+curl --data-binary @photo.jpg -o photo.webp "https://smallwebp.io/api/convert?mode=lossy&quality=85&file_name=photo.jpg"
+```
+
+Setup steps and limits: [smallwebp.io/ai](https://smallwebp.io/ai/).
 
 ## File validation
 
