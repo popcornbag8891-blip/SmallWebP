@@ -37,7 +37,7 @@ Full details: [smallwebp.io/privacy](https://smallwebp.io/privacy/). Security co
 
 ## AI assistants
 
-Add `https://smallwebp.io/mcp` as a custom connector (remote MCP server, no sign-in) in ChatGPT, Claude, Cursor or VS Code, then ask the assistant to convert an image. It uses the same encoders and settings as the website and returns a download link that works for 1 hour. Without an assistant:
+Add `https://smallwebp.io/mcp` as a custom connector (remote MCP server, no sign-in) in ChatGPT, Claude, Cursor or VS Code, then ask the assistant to convert an image. In Claude, attached files work once its code sandbox may reach smallwebp.io (Settings → Capabilities: network egress, allowed domains); otherwise share a public link. It uses the same encoders and settings as the website and returns a download link that works for 1 hour. Without an assistant:
 
 ```sh
 curl -H "Content-Type: application/octet-stream" --data-binary @photo.jpg -o photo.webp "https://smallwebp.io/api/convert?mode=lossy&quality=85&file_name=photo.jpg"
