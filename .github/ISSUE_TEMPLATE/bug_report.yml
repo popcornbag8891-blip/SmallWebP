@@ -30,7 +30,7 @@ body:
     attributes:
       label: File type
       multiple: true
-      options: [JPG / JPEG, PNG, GIF (still), GIF (animated), BMP, WebP, AVIF, Other / not sure]
+      options: [JPG / JPEG, PNG, GIF (still), GIF (animated), BMP, WebP, AVIF, HEIC / HEIF, TIFF, PSD / PSB, Other / not sure]
     validations:
       required: true
   - type: input
@@ -43,6 +43,11 @@ body:
     attributes:
       label: Mode
       options: [Lossless, Near-lossless, High quality, Not sure]
+  - type: dropdown
+    id: output
+    attributes:
+      label: Saved as
+      options: [WebP, AVIF, Not sure]
     validations:
       required: true
   - type: dropdown
