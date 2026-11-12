@@ -24,7 +24,7 @@ This repository holds the documentation and is where problems and ideas are trac
 - **Before/after comparison** with a live quality tuner that re-encodes the real image.
 - **Honest sizes**: if a WebP comes out bigger than the original, it is flagged with the increase written out as a percentage.
 - **Metadata is not copied**: EXIF (including GPS location), XMP and comments are left out of the WebP.
-- **Optional color profile**: off by default, which converts colors to sRGB and drops the ICC profile. Turn on "Keep color profile" to embed the source's profile (for example Display P3 or Adobe RGB) in the WebP with the original color values, for JPG, PNG, WebP and AVIF files that carry one.
+- **Optional color profile**: off by default, which converts colors to sRGB and drops the ICC profile. Turn on "Keep color profile" to embed the source's profile (for example Display P3 or Adobe RGB) in the WebP with the original color values, for JPG, PNG, WebP and AVIF files that carry an RGB profile. CMYK and grayscale profiles are not kept, because they can't describe the WebP's RGB colors.
 
 ## Privacy
 
