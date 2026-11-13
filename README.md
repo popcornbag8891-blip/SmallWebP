@@ -6,14 +6,14 @@
 
 ![smallwebp.io converting a JPG to WebP](docs/screenshot.png)
 
-smallwebp.io turns JPG, PNG, GIF, BMP, WebP, AVIF, HEIC, TIFF and Photoshop (PSD) files into WebP, or into AVIF if you choose. On the website, the encoders run on your device as WebAssembly, so your images never leave your computer. There is no account, no watermark and no limit on the number of files.
+smallwebp.io turns JPG, PNG, GIF, BMP, WebP, AVIF, HEIC, TIFF, Photoshop (PSD), ICO and JPEG XL files and camera RAW files into WebP, or into AVIF if you choose. On the website, the encoders run on your device as WebAssembly, so your images never leave your computer. There is no account, no watermark and no limit on the number of files.
 
 This repository holds the documentation and is where problems and ideas are tracked. To report something, [open an issue](https://github.com/popcornbag8891-blip/SmallWebP/issues/new/choose).
 
 ## What it does
 
 - **Four modes**
-  - **Auto** (default): picks per file from its verified type. JPG, WebP, AVIF and HEIC get High quality at 90; PNG, GIF, BMP, TIFF and PSD get Lossless. Each result shows what Auto chose, for example "Auto → Q90".
+  - **Auto** (default): picks per file from its verified type. JPG, WebP, AVIF, HEIC, JPEG XL and RAW get High quality at 90; PNG, GIF, BMP, TIFF, PSD and ICO get Lossless. Each result shows what Auto chose, for example "Auto → Q90".
   - **Lossless**: stores the pixels it receives exactly. Best for PNGs, screenshots, logos and graphics.
   - **Near-lossless**: the same lossless engine, with very small pixel adjustments that compress better.
   - **High quality**: lossy WebP with a quality slider from 40 to 100 (default 90). Best for photos.
@@ -51,10 +51,10 @@ Setup steps and limits: [smallwebp.io/ai](https://smallwebp.io/ai/).
 Before a file is opened, smallwebp.io:
 
 - reads the real file type from its first bytes instead of trusting the extension,
-- checks the file size (up to 50 MB) and the declared dimensions (up to 16,383 px per side and 50 megapixels),
+- checks the file size (up to 50 MB, or 150 MB for camera RAW files) and the declared dimensions (up to 16,383 px per side and 50 megapixels),
 - rejects files that contain known script patterns or appended archives and programs.
 
-Files are processed one at a time. This catches malformed and disguised files, but it is **validation, not a virus scanner**, and it can't guarantee that any file is safe. Files that pass are decoded by your browser's own image decoder, or for HEIC, TIFF and PSD by a decoder that loads only for those files and runs in the same worker.
+Files are processed one at a time. This catches malformed and disguised files, but it is **validation, not a virus scanner**, and it can't guarantee that any file is safe. Files that pass are decoded by your browser's own image decoder, or for HEIC, TIFF, PSD, ICO, JPEG XL and RAW by a decoder that loads only for those files and runs in the same worker.
 
 ## Supported formats
 
@@ -64,8 +64,11 @@ Files are processed one at a time. This catches malformed and disguised files, b
 | HEIC / HEIF still images | WebP or AVIF |
 | TIFF, 8 or 16 bits: uncompressed, LZW, ZIP/Deflate, Zstandard, PackBits, JPEG or CCITT fax; first page only | WebP or AVIF |
 | PSD / PSB, any color mode at 1–32 bits. Uses Photoshop's flattened copy when present; otherwise rebuilds the picture from the layers (blend modes, groups, clipping and vector masks, artboards, solid and gradient fills; layer styles and adjustment layers are skipped with a note). On drop, choose the whole image, each visible layer as its own transparent file, or both; layers can be cropped or keep the full canvas, one file per layer or per group, text layers left out | WebP or AVIF |
+| ICO / CUR icons (the largest size in the file) | WebP or AVIF |
+| JPEG XL still images (up to 40 megapixels) | WebP or AVIF |
+| Camera RAW: DNG, CR2, CR3, NEF, ARW, RAF, ORF, RW2 and more. The JPEG the camera saved inside the file is converted; the sensor data is not developed. | WebP or AVIF |
 
-Not supported: SVG, ICO, RAW camera files, JPEG XL and PDF. SVG is refused on purpose, because it can contain scripts. Also refused with a message: HEIC files that hold only a burst or animation.
+Not supported: SVG and PDF. SVG is refused on purpose, because it can contain scripts. Also refused with a message: HEIC files that hold only a burst or animation, animated JPEG XL files, and RAW files with no JPEG saved inside.
 
 ## Browsers
 
