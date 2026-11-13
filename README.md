@@ -1,12 +1,12 @@
 # smallwebp.io
 
-**Convert images to WebP in your browser. Nothing is uploaded.** Or from ChatGPT, Claude and other AI assistants.
+**Convert images to WebP in your browser; the website never uploads them.** Or from ChatGPT, Claude and other AI assistants, through a separate server-side converter.
 
 [**Open smallwebp.io →**](https://smallwebp.io)
 
 ![smallwebp.io converting a JPG to WebP](docs/screenshot.png)
 
-smallwebp.io turns JPG, PNG, GIF, BMP, WebP, AVIF, HEIC, TIFF and Photoshop (PSD) files into WebP, or into AVIF if you choose. The encoders run on your device as WebAssembly, so your images never leave your computer. There is no account, no watermark and no limit on the number of files.
+smallwebp.io turns JPG, PNG, GIF, BMP, WebP, AVIF, HEIC, TIFF and Photoshop (PSD) files into WebP, or into AVIF if you choose. On the website, the encoders run on your device as WebAssembly, so your images never leave your computer. There is no account, no watermark and no limit on the number of files.
 
 This repository holds the documentation and is where problems and ideas are tracked. To report something, [open an issue](https://github.com/popcornbag8891-blip/SmallWebP/issues/new/choose).
 
@@ -61,10 +61,10 @@ Files are processed one at a time. This catches malformed and disguised files, b
 | --- | --- |
 | JPG / JPEG / JFIF, PNG, GIF (including animated), BMP, WebP, AVIF | WebP (default) or AVIF |
 | HEIC / HEIF still images | WebP or AVIF |
-| TIFF, 8 or 16 bits: uncompressed, LZW, ZIP/Deflate, PackBits, JPEG or CCITT fax; first page only | WebP or AVIF |
+| TIFF, 8 or 16 bits: uncompressed, LZW, ZIP/Deflate, Zstandard, PackBits, JPEG or CCITT fax; first page only | WebP or AVIF |
 | PSD / PSB, any color mode at 1–32 bits. Uses Photoshop's flattened copy when present; otherwise rebuilds the picture from the layers (blend modes, groups, clipping and vector masks, artboards, solid and gradient fills; layer styles and adjustment layers are skipped with a note) | WebP or AVIF |
 
-Not supported: SVG, ICO, RAW camera files, JPEG XL and PDF. SVG is refused on purpose, because it can contain scripts. Also refused with a message: HEIC files that hold only a burst or animation, and TIFFs with Zstandard compression.
+Not supported: SVG, ICO, RAW camera files, JPEG XL and PDF. SVG is refused on purpose, because it can contain scripts. Also refused with a message: HEIC files that hold only a burst or animation.
 
 ## Browsers
 
