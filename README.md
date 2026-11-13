@@ -20,6 +20,7 @@ This repository holds the documentation and is where problems and ideas are trac
 - **Color optimization** with libimagequant (the engine behind pngquant). It reduces an image to up to 256 colors before encoding, and is skipped when the palette can't meet a high quality threshold. It is off by default in Lossless, so Lossless at original size keeps the source pixels, and on by default in Near-lossless and High quality. In Auto it runs only on files Auto encodes in High quality. The choice is saved separately for each mode.
 - **WebP or AVIF output**: WebP by default. AVIF (made by libavif) can be lossless or use the quality you pick; in our tests it came out 21–47% smaller than WebP at the same look, at one to two seconds per megapixel. Near-lossless exists only for WebP, so it saves AVIFs lossless; animated GIFs stay animated WebP; AVIFs are saved without a color profile, in sRGB.
 - **Animated GIFs stay animated**, keeping every frame's timing and the loop count.
+- **Photoshop layers as separate files**: when you drop a PSD, choose the whole image, each visible layer as its own transparent file, or both. Layers can be cropped to their pixels or keep the full canvas, one file per layer or per top-level group; text and adjustment layers are left out.
 - **Batch conversion** of many files or whole folders, with one ZIP download that keeps the folder paths.
 - **Optional resize** to a maximum longest side. Smaller images keep their size.
 - **Before/after comparison** with a live quality tuner that re-encodes the real image.
