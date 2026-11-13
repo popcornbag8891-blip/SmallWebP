@@ -62,7 +62,7 @@ Files are processed one at a time. This catches malformed and disguised files, b
 | JPG / JPEG / JFIF, PNG, GIF (including animated), BMP, WebP, AVIF | WebP (default) or AVIF |
 | HEIC / HEIF still images | WebP or AVIF |
 | TIFF, 8 or 16 bits: uncompressed, LZW, ZIP/Deflate, Zstandard, PackBits, JPEG or CCITT fax; first page only | WebP or AVIF |
-| PSD / PSB, any color mode at 1–32 bits. Uses Photoshop's flattened copy when present; otherwise rebuilds the picture from the layers (blend modes, groups, clipping and vector masks, artboards, solid and gradient fills; layer styles and adjustment layers are skipped with a note) | WebP or AVIF |
+| PSD / PSB, any color mode at 1–32 bits. Uses Photoshop's flattened copy when present; otherwise rebuilds the picture from the layers (blend modes, groups, clipping and vector masks, artboards, solid and gradient fills; layer styles and adjustment layers are skipped with a note). On drop, choose the whole image, each visible layer as its own transparent file, or both; layers can be cropped or keep the full canvas, one file per layer or per group, text layers left out | WebP or AVIF |
 
 Not supported: SVG, ICO, RAW camera files, JPEG XL and PDF. SVG is refused on purpose, because it can contain scripts. Also refused with a message: HEIC files that hold only a burst or animation.
 
